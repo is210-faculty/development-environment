@@ -1,0 +1,9 @@
+docker-py
+mock
+mockito
+nose
+pep8
+pylint
+unittest2
+unittest-xml-reporting
+
