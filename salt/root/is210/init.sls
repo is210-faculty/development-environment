@@ -1,5 +1,8 @@
 #!jinja|yaml
 
+include:
+  - vagrant
+
 remove_ubuntu:
   user.absent:
     - name: ubuntu
@@ -56,30 +59,16 @@ lightdm_autologin:
     - require:
       - pkg: apt_pkgs
 
+lightdm_vagrant_mounted:
+  file.managed:
+    - name: /etc/init/lightdm.conf
+    - source: salt://is210/files/lightdm.conf
+    - require:
+      - pkg: apt_pkgs
+
 pip_packages:
   pip.installed:
     - requirements: salt://is210/files/pip_requirements.txt
     - require:
       - pkg: apt_pkgs
     - reload_modules: True
-
-# docker_apt:
-#   pkgrepo.managed:
-#     - name: deb https://get.docker.com/ubuntu docker main
-#     - file: /etc/apt/sources.list.d/docker.list
-#     - keyserver: hkp://keyserver.ubuntu.com:80
-#     - keyid: 36A1D7869245C8950F966E92D8576A8BA88D21E9
-#     - require:
-#       - pkg: apt_pkgs
-#  pkg.latest:
-#    - names:
-#      - lxc-docker
-#    - require:
-#      - pkgrepo: docker_apt
-#
-#docker_running:
-#  service.running:
-#    - name: docker
-#    - enable: True
-#    - require:
-#      - pkg: docker_apt

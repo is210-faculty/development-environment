@@ -6,3 +6,5 @@ localhost-present:
     - names:
       - {{ salt['grains.get']('localhost') }}
       - {{ salt['grains.get']('fqdn') }}
+
+

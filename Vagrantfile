@@ -59,9 +59,13 @@ Vagrant.configure(2) do |config|
   config.vm.synced_folder "data", "/home/vagrant/"
   config.vm.synced_folder "salt/root", "/srv/salt/"
 
-  # Since we mounted the home folder we lost /etc/skel files; re-add them
+  # Add some files to the vagrant user's Desktop / home folder
+  config.vm.provision "file", source: "bootstrap/vagrant",
+    destination: "/home/"
+
+  # Rebuild the pubkey from the private one since we overwrite it with mount
   config.vm.provision "shell",
-    inline: "cp -r /etc/skel/ /home/vagrant/",
+    inline: "ssh-keygen -y -f /vagrant/.vagrant/machines/default/virtualbox/private_key | tee -a /home/vagrant/.ssh/authorized_keys",
     privileged: false
 
   # Main vm provisioning via salt
@@ -76,12 +80,7 @@ Vagrant.configure(2) do |config|
 
   end
 
-  # Add some files to the vagrant user's Desktop / home folder
-  config.vm.provision "file", source: "bootstrap/Desktop",
-    destination: "/home/vagrant/"
-
   # Lightdm (gui) won't be started on provisioning without this
-  config.vm.provision "shell",
-    inline: "service lightdm start"
+  config.vm.provision "shell", inline: "service lightdm start"
 
 end

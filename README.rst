@@ -322,9 +322,29 @@ type:
 
 On the next ``vagrant up`` the environment will be restarted.
 
-**************************
-A Note on Data Persistence
-**************************
+.. warning::
+
+    On occasion, you may want to reboot your virtual machine either because
+    you've received a prompt to do so or for personal reasons. Vagrant will
+    not be able to recover from a reboot issued from inside the virtual
+    machine. Instead, exit use the ``vagrant halt`` and ``vagrant up`` commands
+    from your ``Vagrantfile`` directory to turn the machine off and back-on.
+
+****************
+User Credentials
+****************
+
+From your first Vagrant run you'll notice that the virtual machine is already
+configured to automatically log you in. You may, however, have occasion to know
+your username and/or password inside the virtual machine. These have not been
+changed from the Vagrant defaults and are:
+
+    username: vagrant
+    password: vagrant
+
+****************
+Data Persistence
+****************
 
 If you take note of the contents of your ``development-environment`` folder,
 you can see a folder called ``data``.
