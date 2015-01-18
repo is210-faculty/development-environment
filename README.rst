@@ -149,8 +149,9 @@ To run this development environment you must have at least:
 
 - A multi-core CPU
 
+************
 Installation
-============
+************
 
 To install the Student Development Environment Toolkit, you must first
 download and install the three primary software tools used to provision your
@@ -190,8 +191,9 @@ development environment.
     After downloading, install `Vagrant`_ following the appropriate directions
     for your operating system and leaving the defaults as-is.
 
+***********************************
 Getting the Development Environment
-===================================
+***********************************
 
 At this point you have all of the tools necessary to create and run virtual
 machines but haven't yet downloaded the CUNY SPS Student Development
@@ -199,7 +201,7 @@ Environment Toolkit. There are two options for downloading the environment,
 each with specific strengths:
 
 Git
----
+===
 
 The preferred way to download the Student Development Environment Toolkit is
 through `Git`_. By doing so through `Git`_, any updates to the environment
@@ -243,7 +245,7 @@ download the Student Development Environment Toolkit via `Git`_:
         $ cd development-environment
 
 Direct Download
----------------
+===============
 
 If you are unable to download the development environment via `Git`_, you may
 visit the project's `releases page`_ on `GitHub`_ and downloading the most
@@ -251,8 +253,9 @@ recent version as a zipfile or tarball.
 
 Unzip or untar the archive into your desired project folder.
 
+**********************
 Running the First Time
-======================
+**********************
 
 When you run your virtual machine the first time, it downloads your base
 `Lubuntu`_ operating system then downloads, installs, and configures several
@@ -290,8 +293,9 @@ hundred additional pieces of software before the machine is ready to use.
     mouse response) in your VirtualBox window, you can start using your
     development environment.
 
+*****************************************
 Working With Your Development Environment
-=========================================
+*****************************************
 
 Working with your development environment in Vagrant is quite straightforward.
 All commands are issued via the console from the same location as your
@@ -318,8 +322,9 @@ type:
 
 On the next ``vagrant up`` the environment will be restarted.
 
+**************************
 A Note on Data Persistence
-==========================
+**************************
 
 If you take note of the contents of your ``development-environment`` folder,
 you can see a folder called ``data``.
@@ -335,11 +340,16 @@ accessible even when the virtual machine has been shut-down or destroyed.
 Similarly, files placed in this folder will be available in your virtual
 machine as soon as they're placed there.
 
+**********
 Conclusion
-==========
+**********
 
 If you've made it this far, you should have a fully-functioning development
 environment. Try clicking around or running your first program and enjoy!
+
+**********
+References
+**********
 
 .. target-notes::
 
