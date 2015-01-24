@@ -234,7 +234,7 @@ download the Student Development Environment Toolkit via `Git`_:
 
     .. code:: console
 
-         $ git clone https://github.com/is210-faculty/development-environment
+         $ git clone https://github.com/is210-faculty/development-environment.git
 
     This will create a folder called ``development-environment`` on your
     filesystem and download the appropriate configuration files. To enter that
