@@ -337,9 +337,9 @@ User Credentials
 From your first Vagrant run you'll notice that the virtual machine is already
 configured to automatically log you in. You may, however, have occasion to know
 your username and/or password inside the virtual machine. These have not been
-changed from the Vagrant defaults and are:
+changed from the Vagrant defaults and are::
 
-    username: vagrant
+    username: vagrant    
     password: vagrant
 
 ****************

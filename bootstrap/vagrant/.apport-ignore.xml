@@ -1,0 +1,4 @@
+<?xml version="1.0" ?>
+<apport>
+  <ignore mtime="1397590459" program="/usr/lib/gvfs/gvfsd-metadata"/>
+</apport>
