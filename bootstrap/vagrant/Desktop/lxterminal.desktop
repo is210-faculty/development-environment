@@ -161,3 +161,4 @@ Exec=lxterminal
 Icon=lxterminal
 Type=Application
 Categories=GTK;Utility;TerminalEmulator;
+Path=/home/vagrant/Desktop
