@@ -63,9 +63,14 @@ Vagrant.configure(2) do |config|
   config.vm.provision "file", source: "bootstrap/vagrant",
     destination: "/home/"
 
+  # Create the .ssh directory and chmod it accordingly
+  config.vm.provision "shell",
+    inline: "mkdir ~/.ssh && chmod -R go-rwx ~/.ssh",
+    privileged: false
+
   # Rebuild the pubkey from the private one since we overwrite it with mount
   config.vm.provision "shell",
-    inline: "ssh-keygen -y -f /vagrant/.vagrant/machines/default/virtualbox/private_key | tee -a /home/vagrant/.ssh/authorized_keys",
+    inline: "ssh-keygen -y -f /vagrant/.vagrant/machines/default/virtualbox/private_key | tee -a ~/.ssh/authorized_keys",
     privileged: false
 
   # Main vm provisioning via salt
