@@ -1,6 +1,13 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+$ssh_script = <<SCRIPT
+mkdir -p ~/.ssh
+chmod -R go-rwx ~/.ssh
+chmod go-rwx /vagrant/.vagrant/machines/default/virtualbox/private_key
+ssh-keygen -y -f /vagrant/.vagrant/machines/default/virtualbox/private_key | tee -a ~/.ssh/authorized_keys
+SCRIPT
+
 # The git repo is missing the 'data' directory that will become the user's
 # home folder. Create it if it doesn't yet exist.
 Dir.mkdir("data") unless File.exists?("data")
@@ -52,7 +59,7 @@ Vagrant.configure(2) do |config|
   #
   config.vm.provider "virtualbox" do |vb|
     vb.gui = true
-    vb.memory = 768
+    vb.memory = 1024
   end
 
   # Mount our sync'ed folders
@@ -60,18 +67,10 @@ Vagrant.configure(2) do |config|
   config.vm.synced_folder "salt/root", "/srv/salt/"
 
   # Add some files to the vagrant user's Desktop / home folder
-  config.vm.provision "file", source: "bootstrap/vagrant",
-    destination: "/home/"
-
-  # Create the .ssh directory and chmod it accordingly
-  config.vm.provision "shell",
-    inline: "mkdir ~/.ssh && chmod -R go-rwx ~/.ssh",
-    privileged: false
+  config.vm.provision "file", source: "bootstrap/vagrant", destination: "/home/"
 
   # Rebuild the pubkey from the private one since we overwrite it with mount
-  config.vm.provision "shell",
-    inline: "ssh-keygen -y -f /vagrant/.vagrant/machines/default/virtualbox/private_key | tee -a ~/.ssh/authorized_keys",
-    privileged: false
+  config.vm.provision "shell", inline: $ssh_script, privileged: false
 
   # Main vm provisioning via salt
   config.vm.provision :salt do |salt|
