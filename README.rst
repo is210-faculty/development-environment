@@ -360,6 +360,54 @@ accessible even when the virtual machine has been shut-down or destroyed.
 Similarly, files placed in this folder will be available in your virtual
 machine as soon as they're placed there.
 
+**********************************************
+Upgrading Your Student Development Environment
+**********************************************
+
+From time to time your instructor may wish to add things to the Student
+Development Environment Toolkit that were not included with the original
+version you installed at the outset of this course. Luckily, if you used Git
+to install your Student Development Environment Toolkit, this process is
+painless and fast. Just follow these easy steps to upgrade:
+
+1.  In your host machine, open a terminal window in the same directory as your  
+    ``Vagrantfile``. This is the same folder where you execute ``vagrant up``   
+    and ``vagrant halt`` to start-up and shut-down your virtual machine,        
+    respectively                                                                
+                                                                                
+    If you list the contents of the directory, you should see your              
+    ``Vagrantfile``.                                                            
+                                                                                
+    .. code:: console
+
+        $ ls ./
+        bootstrap  data  LICENSE  README.rst  salt  Vagrantfile
+
+2.  Next, pull the changes from the original source repository that has been
+    updated by your instructor.
+
+    .. code:: console
+
+        $ git pull origin master
+        From github.com:is210-faculty/development-environment
+         * branch            master     -> FETCH_HEAD
+
+3.  Next, start your vagrant box, if it hasn't already been started with a
+    ``vagrant up``.
+
+    *It's perfectly fine if your vagrant box was already running!*
+
+4.  Inside the vagrant box, open a terminal and type the following command:
+
+    .. code:: console
+
+        $ sudo salt-call state.highstate
+
+    This will initiate the orchestration tool, Salt, to finish configuring
+    your system.
+
+Congratulations! Your environment is now up-to-date!
+
 **********
 Conclusion
 **********
