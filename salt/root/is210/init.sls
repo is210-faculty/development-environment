@@ -48,6 +48,8 @@ apt_pkgs:
       - tree
       - vim
       - virtualenvwrapper
+      - python-docutils
+      - rst2pdf
     - require:
       - pkg: apt
       - user: vagrant_user
