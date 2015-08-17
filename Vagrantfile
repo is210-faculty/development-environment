@@ -75,8 +75,9 @@ Vagrant.configure(2) do |config|
   # Main vm provisioning via salt
   config.vm.provision :salt do |salt|
 
+    salt.bootstrap_options = "-P -c /tmp" # Vagrant issue #6029 and #5973
     salt.install_master = false
-    install_type = "stable"
+    salt.install_type = "stable"
     salt.minion_config = "salt/minion"
     salt.run_highstate = true
     salt.colorize = true
