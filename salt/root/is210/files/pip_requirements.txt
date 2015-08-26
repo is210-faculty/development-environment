@@ -1,6 +1,8 @@
 docker-py
 mock
 mockito
+egenix-mx-base
+SaltPylint
 nose
 pep8
 pylint
