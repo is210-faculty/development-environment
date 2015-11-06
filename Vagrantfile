@@ -78,6 +78,7 @@ Vagrant.configure(2) do |config|
     salt.bootstrap_options = "-P -c /tmp" # Vagrant issue #6029 and #5973
     salt.install_master = false
     salt.install_type = "stable"
+    salt.install_args = "2015.5"
     salt.minion_config = "salt/minion"
     salt.run_highstate = true
     salt.colorize = true
