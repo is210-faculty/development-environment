@@ -57,7 +57,8 @@ disable=R,
   W8292,
   C0304
   E1320,
-  E8731
+  E8731,
+  E0599
 #  E8121,
 #  E8122,
 #  E8123,
@@ -79,6 +80,7 @@ disable=R,
 # I0011 (locally-disabling)
 # I0012 (locally-enabling)
 # W1202 (logging-format-interpolation)
+# E0599 file-perms (vagrant uses a 002 umask)
 # A comma-separated list of package or module names from where C extensions may
 # be loaded. Extensions are loading into the active Python interpreter and may
 # run arbitrary code
