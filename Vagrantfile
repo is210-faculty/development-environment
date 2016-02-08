@@ -61,6 +61,9 @@ Vagrant.configure(2) do |config|
     vb.gui = true
     vb.memory = 2048
   end
+  
+  # Explode the timeout to give slow machines a shot at booting
+  config.vm.boot_timeout = 180
 
   # Mount our sync'ed folders
   config.vm.synced_folder "data", "/home/vagrant/"
